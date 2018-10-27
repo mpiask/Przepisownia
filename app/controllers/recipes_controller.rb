@@ -1,4 +1,5 @@
 class  RecipesController < ApplicationController
+
   def new
     @recipe = Recipe.new
   end
@@ -44,7 +45,17 @@ class  RecipesController < ApplicationController
     redirect_to recipes_path
   end
 
+  def upvote
+    @recipe = Recipe.find(params[:id])
+    @recipe.upvote_by current_user
+    redirect_back(fallback_location: root_path)
+  end
 
+  def downvote
+    @recipe = Recipe.find(params[:id])
+    @recipe.downvote_from current_user
+    redirect_back(fallback_location: root_path)
+  end
 private
 
   def recipe_params
