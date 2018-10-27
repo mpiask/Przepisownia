@@ -7,4 +7,16 @@
       </div>
     </div>
   </div>
+  <div class="btn-group">
+      <%= link_to like_recipe_path(recipe), method: :put, class: "btn btn-default btn-sm" do %>
+        <span class="glyphicon glyphicon-chevron-up"></span>
+        Upvote
+        <%= recipe.get_upvotes.size %>
+      <% end %>
+      <%= link_to dislike_recipe_path(recipe), method: :put, class: "btn btn-default btn-sm" do %>
+        <span class="glyphicon glyphicon-chevron-down">
+        Downvote
+        <%= recipe.get_downvotes.size %>
+      <% end %>
+    </div>
 <% end %>
