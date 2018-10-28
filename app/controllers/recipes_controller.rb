@@ -1,4 +1,7 @@
 class  RecipesController < ApplicationController
+  before_action :set_recipe, only: [:edit, :update, :show, :destroy, :upvote, :downvote]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
+
   def new
     @recipe = Recipe.new
   end
@@ -16,7 +19,6 @@ class  RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
   end
 
   def index
@@ -24,11 +26,9 @@ class  RecipesController < ApplicationController
   end
 
   def edit
-    @recipe = Recipe.find(params[:id])
   end
 
   def update
-    @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
       flash[:success] = "Updated successfully"
       redirect_to recipe_path(@recipe)
@@ -38,27 +38,36 @@ class  RecipesController < ApplicationController
   end
 
   def destroy
-    @recipe = Recipe.find(params[:id])
     @recipe.destroy
     flash[:danger] = "Deleted successfully"
     redirect_to recipes_path
   end
 
   def upvote
-    @recipe = Recipe.find(params[:id])
     @recipe.upvote_by current_user
     redirect_back(fallback_location: root_path)
   end
 
   def downvote
-    @recipe = Recipe.find(params[:id])
     @recipe.downvote_from current_user
     redirect_back(fallback_location: root_path)
   end
+
 private
+  def set_recipe
+    @recipe = Recipe.find(params[:id])
+  end
 
   def recipe_params
     params.require(:recipe).permit(:title, :description, category_ids: [])
+  end
+
+  def require_same_user
+    @recipe = Recipe.find(params[:id])
+    if !current_user.admin? && current_user != @recipe.user
+      flash[:danger] = "You can only edit or delete your own articles"
+      redirect_to root_path
+    end
   end
 
 end
