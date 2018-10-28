@@ -1,5 +1,4 @@
 class  RecipesController < ApplicationController
-
   def new
     @recipe = Recipe.new
   end
@@ -59,7 +58,7 @@ class  RecipesController < ApplicationController
 private
 
   def recipe_params
-    params.require(:recipe).permit(:title, :description)
+    params.require(:recipe).permit(:title, :description, category_ids: [])
   end
 
 end

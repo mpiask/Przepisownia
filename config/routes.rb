@@ -7,4 +7,9 @@ Rails.application.routes.draw do
       put 'dislike', to: "recipes#downvote"
     end
   end
+  resources :categories
+
+  get 'users', to: 'users#index'
+  get 'user/:id', to: 'users#show', as: 'user'
+
 end
