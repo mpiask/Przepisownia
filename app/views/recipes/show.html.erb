@@ -1,6 +1,9 @@
 <h2 align="center"> Title: <%= @recipe.title %></h2>
 <div class="well col-xs-4 col-xs-offset-4">
   <%= @recipe.title %>
+  <% @recipe.categories.each do |cat| %>
+  <%= cat.name %>
+  <% end %>
   <% if @recipe.user %>
     <ul class="listing">
       <div class="row center">
