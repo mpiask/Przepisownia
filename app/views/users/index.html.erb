@@ -1,0 +1,10 @@
+<h1 align="center"> Listing all users </h1>
+<% @users.each do |user| %>
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-2">
+      <div class="article-title">
+        <%= link_to user.email, user_path(user) %>
+      </div>
+    </div>
+  </div>
+<% end %>
