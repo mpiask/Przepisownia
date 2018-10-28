@@ -15,11 +15,13 @@
       </div>
     </ul>
   <% end %>
-  <%= link_to "Edit this article", edit_recipe_path(@recipe), class: "btn btn-xs btn-primary" %>
-  <%= link_to "Delete this", recipe_path(@recipe), method: :delete,
-                                                   data: { confirm: "Are you sure?"},
-                                                   class: "btn btn-xs btn-danger" %>
-                                                   <div class="btn-group">
+  <% if current_user.admin? || current_user == @recipe.user %>
+    <%= link_to "Edit this article", edit_recipe_path(@recipe), class: "btn btn-xs btn-primary" %>
+    <%= link_to "Delete this", recipe_path(@recipe), method: :delete,
+                                                     data: { confirm: "Are you sure?"},
+                                                     class: "btn btn-xs btn-danger" %>
+                                                     <div class="btn-group">
+  <% end %>
 
   <%= link_to like_recipe_path(@recipe), method: :put, class: "btn btn-default btn-sm" do %>
     <span class="glyphicon glyphicon-chevron-up"></span>
