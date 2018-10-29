@@ -1,4 +1,6 @@
-class  CategoriesController < ApplicationController
+# frozen_string_literal: true
+
+class CategoriesController < ApplicationController
   def new
     @category = Category.new
   end
@@ -6,7 +8,7 @@ class  CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      flash[:success] = "Category saved"
+      flash[:success] = 'Category saved'
       redirect_to categories_path
     else
       render 'new'
@@ -28,7 +30,7 @@ class  CategoriesController < ApplicationController
   def update
     @category = Category.find(params[:id])
     if @category.update(category_params)
-      flash[:success] = "Category name changed"
+      flash[:success] = 'Category name changed'
       redirect_to category_path(@category)
     else
       render 'edit'
@@ -38,13 +40,13 @@ class  CategoriesController < ApplicationController
   def destroy
     @category = Category.find(params[:id])
     @category.destroy
-    flash[:danger] = "Deleted successfully"
+    flash[:danger] = 'Deleted successfully'
     redirect_to categories_path
   end
 
   private
+
   def category_params
     params.require(:category).permit(:name)
   end
-
 end
