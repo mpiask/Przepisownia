@@ -1,22 +1,8 @@
-<h1 align="center"> Listing all articles </h1>
-<% @recipes.each do |recipe| %>
-  <div class="row">
-    <div class="col-xs-6 col-xs-offset-2">
-      <div class="article-title">
-        <%= link_to recipe.title, recipe_path(recipe) %>
-      </div>
-    </div>
-  </div>
-  <div class="btn-group">
-      <%= link_to like_recipe_path(recipe), method: :put, class: "btn btn-default btn-sm" do %>
-        <span class="glyphicon glyphicon-chevron-up"></span>
-        Upvote
-        <%= recipe.get_upvotes.size %>
-      <% end %>
-      <%= link_to dislike_recipe_path(recipe), method: :put, class: "btn btn-default btn-sm" do %>
-        <span class="glyphicon glyphicon-chevron-down">
-        Downvote
-        <%= recipe.get_downvotes.size %>
-      <% end %>
-    </div>
-<% end %>
+<h1 align="center"> Recipes </h1>
+<div align="center">
+  <%= will_paginate %>
+</div>
+<%= render 'recipe', obj: @recipes %>
+<div align="center">
+  <%= will_paginate %>
+</div>

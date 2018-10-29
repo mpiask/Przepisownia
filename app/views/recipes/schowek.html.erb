@@ -1,0 +1,18 @@
+<% if current_user.admin? || current_user == @recipe.user %>
+  <%= link_to "Edit this article", edit_recipe_path(@recipe), class: "btn btn-xs btn-primary" %>
+  <%= link_to "Delete this", recipe_path(@recipe), method: :delete,
+                                                   data: { confirm: "Are you sure?"},
+                                                   class: "btn btn-xs btn-danger" %>
+                                                   <div class="btn-group">
+<% end %>
+
+<%= link_to like_recipe_path(@recipe), method: :put, class: "btn btn-default btn-sm" do %>
+  <span class="glyphicon glyphicon-chevron-up"></span>
+  Nice!
+  <%= @recipe.get_upvotes.size %>
+<% end %>
+<%= link_to dislike_recipe_path(@recipe), method: :put, class: "btn btn-default btn-sm" do %>
+  <span class="glyphicon glyphicon-chevron-down">
+  Bad!
+  <%= @recipe.get_downvotes.size %>
+<% end %>

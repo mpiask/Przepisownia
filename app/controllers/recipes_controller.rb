@@ -23,7 +23,7 @@ class RecipesController < ApplicationController
   def show; end
 
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.paginate(page: params[:page], per_page: 7)
   end
 
   def edit; end
