@@ -19,12 +19,8 @@
   <body>
 
     <div class="navbar navbar-default navbar-static-top">
-      <div class="container">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
+      <div class="container container-nav">
+        
         <%= link_to "Przepisownia", root_path, class: "navbar-brand", id: "logo" %>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
@@ -53,13 +49,13 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-lg-9">
+        <div class="col-lg-3">
           <%= bootstrap_flash %>
           <%= yield %>
         </div>
       </div><!--/row-->
 
-      <footer>
+      <footer class="footer">
         <p>&copy; Przepisownia - Bartek Gaweł</p>
       </footer>
 
