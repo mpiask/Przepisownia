@@ -1,16 +1,17 @@
-<h2 align="center"> Recipe: <%= @recipe.title %></h2>
+<h2 align="center"><%= @recipe.title.capitalize %></h2>
 
-<div class="well col-xs-8 col-xs-offset-4">
-  <%= @recipe.title %>
+<div class="well col-xs-8 col-xs-offset-3">
 
   <% if @recipe.user %>
     <ul class="listing">
-      <div class="row center">
-        <div class="col-md-4 col-md-offset-4">
-          <h4 class="center description"><strong>Description:</strong></h4>
-        </div>
+      <div class="recipe-description">
+        <div class="col-md-4 col-md-offset-3">
+          <h4 class="center description"><strong>Description</strong></h4>
+        </div><br>
+        <div class="recipe-description-box">
           <%= simple_format(@recipe.description) %>
           Created by:<%= @recipe.user.email%>
+        </div>
         </div>
         <div class="article-actions">
           <% if current_user.admin? || current_user == @recipe.user %>

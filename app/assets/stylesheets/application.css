@@ -21,7 +21,6 @@
   font-weight: bold;
   color: #917D51;
 }
-.navbar-nav{}
 
 .row{
   display: flex;
@@ -29,6 +28,23 @@
 }
 
 .footer {
+  padding:115px;
   display: flex;
   justify-content: center;
+}
+.listing{
+  list-style-type: none;
+}
+.recipe-li-inner{
+  text-align: center;
+}
+.recipe-description{
+  width: 90%;
+}
+.recipe-description-box{
+  width: 90%;
+  margin: 20px 0;
+}
+.listing-cat.listing{
+  padding: 0;
 }
