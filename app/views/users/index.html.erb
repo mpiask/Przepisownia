@@ -1,10 +1,18 @@
-<h1 align="center"> Listing all users </h1>
-<% @users.each do |user| %>
-  <div class="row">
-    <div class="col-xs-6 col-xs-offset-2">
-      <div class="article-title">
+<h1 align="center">Listing all categories</h1>
+<div align="center">
+  <%= will_paginate %>
+</div>
+
+<ul class="listing">
+  <% @users.each do |user| %>
+    <div class="row">
+      <div class="well col-md-7 recipe-li-inner">
         <%= link_to user.email, user_path(user) %>
+        <li><small> <%= pluralize(user.recipes.count, "recipe") %></small></li>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</ul>
+<div align="center">
+  <%= will_paginate %>
+</div>
