@@ -17,15 +17,13 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def show
-  end
+  def show; end
 
   def index
     @categories = Category.paginate(page: params[:page], per_page: 5)
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @category.update(category_params)

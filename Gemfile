@@ -6,7 +6,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'will_paginate', '~> 3.1.5'
 gem 'acts_as_votable', '~> 0.11.1'
 gem 'devise'
 gem 'devise-bootstrap-views'
@@ -14,6 +13,7 @@ gem 'jquery-rails'
 gem 'rails', '~> 5.2.1'
 gem 'rubocop', require: false
 gem 'twitter-bootstrap-rails'
+gem 'will_paginate', '~> 3.1.5'
 # Use sqlite3 as the database for Active Record
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
